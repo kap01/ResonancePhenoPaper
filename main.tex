@@ -1,0 +1,137 @@
+%\pdfoutput=1
+\documentclass[12pt,a4paper]{article}
+% For two column text, add "twocolumn" as an option to the document
+% class. Also uncomment the two "onecolumn" and "twocolumn" lines
+% around the title page below.
+
+% Variables that controls behaviour
+\usepackage{ifthen} % for conditional statements
+\usepackage{subfigure}
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true} % False for eps figures 
+
+\newboolean{articletitles}
+\setboolean{articletitles}{true} % False removes titles in references
+
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false} %True for upright particle symbols
+
+\input{preamble}
+\usepackage{longtable} % only for template; not usually to be used in PAPERs
+\usepackage{caption}
+\newcommand{\br}[1]{\ensuremath{\BR\left[#1\right]}\xspace}
+\def\LstFTTT      {\ensuremath{\PLambda^{*}(1520)^{0}}\xspace}
+\def\mkpi  {\ensuremath{m_{K\pi}}\xspace}
+\def\mkpimm{\ensuremath{m_{K\pi\mu\mu}}\xspace}
+\def\BdToKpimm    {\decay{\Bd}{\Kp\pim\mumu}}
+\def\BuToKmm    {\decay{\Bu}{\Kp\mumu}}
+\def\BsToJPsiKst  {\decay{\Bs}{\jpsi\Kstarz}}
+\def\LstFTTTTopK  {\decay{\LstFTTT}{p\Km}}
+\def\LbToLstmm    {\decay{\Lb}{\LstFTTT\mumu}}
+\def\LbTopKmm     {\decay{\Lb}{p\Km\mumu}}
+\def\BuToKmm      {\decay{\Bu}{\Kp\mumu}}
+\def\BsTophimm    {\decay{\Bs}{\Pphi\mumu}}
+\def\BF {dBF/d\qq}
+\def\BupsitwosK       {\decay{\Bp}{ \psitwos \Kp}}
+\def\jpsim {\ensuremath{m_{\mup\mun}}\xspace}
+\def\AFB {\ensuremath{A_{FB}}\xspace}
+\def\FH {\ensuremath{F_{H}}\xspace}
+\def\thetal {\ensuremath{\theta_{l}}\xspace}
+\def\costhetal {\ensuremath{\cos\thetal}\xspace}
+\def\costhetalsq {\ensuremath{\cos^{2}\thetal}\xspace}
+\def\BdKsMuMu     {\decay{\Bd}{ \KS \mup\mun}}
+\def\BdKzMuMu     {\decay{\Bd}{ K^{0} \mup\mun}}
+\def\BdJpsiKs     {\decay{\Bd}{ \jpsi \KS}}
+\def\BdJpsiKz    {\decay{\Bd}{ \jpsi K^{0}}}
+\def\BuJpsiK       {\decay{\Bp}{ \jpsi \Kp}}
+\def\BmJpsiK     {\decay{\Bm}{ \jpsi \Km}}
+\def\BuKMuMu     {\decay{\Bp}{ \Kp \mup\mun}}
+\def\BmKMuMu     {\decay{\Bm}{ \Km \mup\mun}}
+\def\KsMuMu     { \KS \mup\mun}
+\def\KzMuMu     { \Kz \mup\mun}
+\def\KMuMu     { \Kp \mup\mun}
+\def\JpsiKs     { \jpsi \KS}
+\def\JpsiKz     { \jpsi \Kz}
+\def\JpsiK       { \jpsi \Kp}
+\def\BuKstMuMu     {\decay{\Bp}{ (K^{*+} \to \KS \pip) \mup\mun}}
+\def\BuJpsiKst    {\decay{\Bp}{ \jpsi (K^{*+} \to \KS \pip)}}
+\def\BdKstKpiMuMu     {\decay{\Bd}{ (K^{*0} \to \Kp \pim) \mup\mun}}
+\def\BdKstMuMu     {\decay{\Bd}{K^{*0} \mup\mun}}
+\def\BdKstMuMu     {\decay{\Bd}{K^{*0} \mup\mun}}
+\def\BdbKstbMuMu     {\decay{\Bdb}{\Kstarzb \mup\mun}}
+\def\BdJpsiKst    {\decay{\Bd}{ \jpsi (K^{*0} \to \Kp \pim) }}
+\def\BKMuMu    {\decay{\B}{ K \mup\mun}}
+\def\BKstMuMu {\decay{\B}{ K^{*} \mup \mun}}
+\def\BJpsiK  {\decay{\B}{\jpsi K}}
+\def\BJpsiKst  {\decay{\B}{ \jpsi \Kstar}}
+\def\AllModes    {\decay{\B}{ K^{(*)} \mup\mun}}
+\def\CharModes    {\decay{\Bu}{ K^{(*)+} \mup\mun}}
+\def\NeutModes    {\decay{\Bd}{ K^{(*)0} \mup\mun}}
+\def\Ks {\KS}
+\def\qq {$q^{2}$\xspace}
+\def\AI {$A_{I}$\xspace}
+\def\PageBreak {\pagebreak}
+\def\JpsiModes {\decay{\B}{ \jpsi h  }}
+
+% lambda swap masses
+\def\mSwappKmm {\ensuremath{m_{(\pi\to p)K\mu\mu}}\xspace}
+\def\mDoubleSwappKmm {\ensuremath{m_{(K\to p)(\pi\to K)\mu\mu}}\xspace}
+
+\usepackage{xcolor}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Title     %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{1}
+
+% %%%%%%% CHOOSE TITLE PAGE--------
+%\onecolumn
+\input{title-LHCb-ANA}
+%\twocolumn
+% %%%%%%%%%%%%% ---------
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+\tableofcontents
+\cleardoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Main text %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{plain} % restore page numbers for the main text
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%% Uncomment during review phase. 
+%% Comment before a final submission.
+%\linenumbers
+
+% You can include short sections directly in the main tex file.
+% However, for larger papers it is desirable to split the text into
+% several semiautonomous files, which can be revised independently.
+% This is especially useful when developing a document in
+% collaboration with several people, since then different parts can be
+% edited independently.  This type of file organization is shown here.
+% 
+
+\input{introduction}
+\input{method}
+\input{results}
+\input{conclusions}
+\section*{Acknowledgements}
+We would like to thank A.~Khodjamirian and R.~Zwicky for
+helpful discussions 
+\clearpage
+\input{appendix}
+\addcontentsline{toc}{section}{References}
+\addcontentsline{toc}{section}{Appendix}
+\bibliographystyle{LHCb}
+\bibliography{main,LHCb-PAPER,LHCb-CONF,LHCb-DP}
+%
+
+
+\end{document}
